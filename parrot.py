@@ -13,6 +13,7 @@ from linebot.exceptions import (
 
 from linebot.models import (ImageMessage, ImageSendMessage, MessageEvent,
                             TextMessage, TextSendMessage
+)
 
 app = Flask(__name__)
 app.debug = False
