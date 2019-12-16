@@ -17,7 +17,6 @@ from linebot.models import (ImageMessage, ImageSendMessage, MessageEvent,
 from PIL import Image
 
 app = Flask(__name__)
-app.debug = False
 
 #環境変数取得
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
@@ -25,10 +24,6 @@ YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
-                            
-SRC_IMAGE_PATH = "static/images/{}.jpg"
-MAIN_IMAGE_PATH = "static/images/{}_main.jpg"
-PREVIEW_IMAGE_PATH = "static/images/{}_preview.jpg"
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -56,7 +51,19 @@ def handle_image(event):
     w, h = x.size
     line_bot_api.reply_message(
     event.reply_token,
-    TextSendMessage(text=w, h))
+    TextSendMessage(text=w ',' h))
+    
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    line_bot_api.reply_message(
+        event.reply_token,
+        TextSendMessage(text=event.message.text))
+
+
+if __name__ == "__main__":
+#    app.run()
+    port = int(os.getenv("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
 
     
 
