@@ -39,15 +39,15 @@ def callback():
     return 'OK'
 
 
-@handler.add(MessageEvent, message=ImageMessage)
-def handle_image(event):
-    message_id = event.message.id
-    message_content = line_bot_api.get_message_content(message_id)
-    x = BytesIO(message_content.content)
-    w, h = x.size
-    line_bot_api.reply_message(
-    event.reply_token,
-    TextSendMessage(text=w ',' h))
+#@handler.add(MessageEvent, message=ImageMessage)
+#def handle_image(event):
+#    message_id = event.message.id
+#    message_content = line_bot_api.get_message_content(message_id)
+#    x = BytesIO(message_content.content)
+#    w, h = x.size
+#    line_bot_api.reply_message(
+#    event.reply_token,
+#    TextSendMessage(text=w ',' h))
     
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
