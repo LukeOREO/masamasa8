@@ -1,7 +1,3 @@
-import os
-from pathlib import Path
-from typing import List
-
 from flask import Flask, request, abort
 
 from linebot import (
@@ -10,11 +6,11 @@ from linebot import (
 from linebot.exceptions import (
     InvalidSignatureError
 )
-
-from linebot.models import (ImageMessage, ImageSendMessage, MessageEvent,
-                            TextMessage, TextSendMessage
+from linebot.models import (
+    ImageMessage, ImageSendMessage, MessageEvent, TextMessage, TextSendMessage
 )
 from PIL import Image
+import os
 
 app = Flask(__name__)
 
