@@ -1,1 +1,1 @@
-web: p parrot.py
+web:parrot.py
