@@ -9,7 +9,9 @@ from linebot.exceptions import (
 from linebot.models import (
     ImageMessage, ImageSendMessage, MessageEvent, TextMessage, TextSendMessage
 )
+
 from PIL import Image
+
 import os
 
 app = Flask(__name__)
